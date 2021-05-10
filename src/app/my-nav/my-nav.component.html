@@ -1,0 +1,25 @@
+<p>
+    <mat-toolbar color="primary">
+        <span>Listado de Tareas</span>
+        <span class="spacer"></span>
+    </mat-toolbar>
+</p>
+
+<mat-sidenav-container class="SideBar" hasBackdrop="true">
+    <mat-sidenav #sidenav mode="over" closed class="sidenav">
+        <ul class=" navbar-nav mr-auto">
+            <li class="nav-item">
+                <button id="close" mat-button (click)="sidenav.toggle()">Close</button>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/createTask" routerLinkActive="active">Nueva Tarea</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/categories" routerLinkActive="active">Categorias</a>
+            </li>
+        </ul>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <button mat-button (click)="sidenav.toggle()">Menu</button>
+    </mat-sidenav-content>
+</mat-sidenav-container>
