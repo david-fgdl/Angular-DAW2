@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  firebase: {
+  configFirebase: {
     apiKey: "AIzaSyB689l620WhR2EmKJ839U5S0l2ZWJGh8YI",
     authDomain: "angulardawii.firebaseapp.com",
-    databaseURL:  "https://angulardawii-default-rtdb.europe-west1.firebasedatabase.app",
+    databaseURL: "https://angulardawii-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "angulardawii",
     storageBucket: "angulardawii.appspot.com",
     messagingSenderId: "724623321055",

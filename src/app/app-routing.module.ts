@@ -4,14 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 
 /*Componentes*/
 import { ListadoComponent } from './listado/listado.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
+
 import { HistoricalComponent } from './historical/historical.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/listado', pathMatch: 'full' },
   { path: 'listado', component: ListadoComponent },
-  { path: 'historical', component: HistoricalComponent }
-  //{ path: 'createTask', component:  }
-  //{ path: 'categories', component:  }
+  { path: 'categories', component: CategoriesComponent },
+  { path: 'createTask', component: CreateTaskComponent },
+  //{ path: 'historical', component: HistoricalComponent }
 ];
 
 @NgModule({
