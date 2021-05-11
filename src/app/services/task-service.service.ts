@@ -43,4 +43,3 @@ export class CategoryService {
     this.firestore.doc('categories/' +category.name).delete();
   } */
 }
-

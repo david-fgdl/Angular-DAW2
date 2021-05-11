@@ -15,7 +15,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 /* Components */
 import { MyNavComponent } from './my-nav/my-nav.component';
 import { ListadoComponent } from './listado/listado.component';
-import { CategoryService} from './services/category.service'
+import { CategoryService} from './services/task-service.service'
 
 import { CategoriesComponent } from './categories/categories.component';
 import { CreateTaskComponent } from './create-task/create-task.component';

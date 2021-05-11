@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { CategoryInt } from '../../models/category.interface';
-import { CategoryService } from '../services/category.service'
+import { CategoryService } from '../services/task-service.service'
 
 @Component({
   selector: 'app-categories',
