@@ -18,7 +18,7 @@ export class CategoriesComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private taskService: TaskService) { }
+  constructor(public taskService: TaskService) { }
   
   ngOnInit(): void {
     this.taskService.getAllCategories().subscribe(res => this.dataSource.data = res);
@@ -35,4 +35,7 @@ export class CategoriesComponent implements OnInit {
     this.taskService.deleteCategory(id);
   }
 
+  onSaveForm(){
+    this.taskService.editCategory(this.taskService.selectedCat);
+  }
 }

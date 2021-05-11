@@ -5,3 +5,8 @@ table {
 th.mat-sort-header-sorted {
     color: black;
 }
+
+.container {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,3 +1,12 @@
+<div class="container">
+    <mat-form-field>
+        <input matInput placeholder="Nombre de la Categoria" name="name" [(ngModel)]="this.taskService.selectedCat.name">
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="onSaveForm()">
+        Actualizar&nbsp;<mat-icon>update</mat-icon>
+    </button>
+</div>
+
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
     <!-- task Column -->

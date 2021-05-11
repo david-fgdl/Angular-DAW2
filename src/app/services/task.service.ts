@@ -30,7 +30,7 @@ export class TaskService {
 
   public selectedCat = {
     id: null,
-    category: '',
+    name: '',
   }
 
   constructor(private readonly afs: AngularFirestore) {
