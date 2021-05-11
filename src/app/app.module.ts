@@ -20,6 +20,7 @@ import { ListadoComponent } from './listado/listado.component';
 import { TaskService } from './services/task.service';
 import { AllTasksComponent } from './all-tasks/all-tasks.component';
 import { FormComponent } from './form/form.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FormComponent } from './form/form.component';
     ListadoComponent,
     AllTasksComponent,
     FormComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,
