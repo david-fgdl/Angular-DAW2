@@ -1,3 +1,11 @@
+<div>
+    <mat-button-toggle-group name="fontStyle" aria-label="Source Selection">
+        <mat-button-toggle (click)="StateSelector('all')">Todas</mat-button-toggle>
+        <mat-button-toggle (click)="StateSelector('pending')">Tareas Pendientes</mat-button-toggle>
+        <mat-button-toggle (click)="StateSelector('process')">Tareas en Proceso</mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
+
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
     <!-- task Column -->

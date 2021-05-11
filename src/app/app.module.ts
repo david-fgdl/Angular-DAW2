@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialsModule } from './materials/materials.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* import { ReactiveFormsModule, FormsModule } from '@angular/forms'; */
 
@@ -16,20 +16,20 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 /* Components */
 import { MyNavComponent } from './my-nav/my-nav.component';
-import { ListadoComponent } from './listado/listado.component';
 import { TaskService } from './services/task.service';
 import { AllTasksComponent } from './all-tasks/all-tasks.component';
 import { FormComponent } from './form/form.component';
-import { CategoriesComponent } from './categories/categories.component';
+/* import { CategoriesComponent } from './categories/categories.component'; */
+import { CreateTaskComponent } from './create-task/create-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyNavComponent,
-    ListadoComponent,
     AllTasksComponent,
     FormComponent,
-    CategoriesComponent,
+    /* CategoriesComponent, */
+    CreateTaskComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +39,7 @@ import { CategoriesComponent } from './categories/categories.component';
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.configFirebase),
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]

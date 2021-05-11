@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import{ CategoryInt } from '../models/category.interface';
+/* import{ CategoryInt } from '../models/category.interface'; */
 import { TaskService } from '../services/task.service';
 
 @Component({
@@ -18,10 +18,10 @@ export class CategoriesComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public taskService: TaskService) { }
+  constructor(public categoryService: TaskService) { }
   
   ngOnInit(): void {
-    this.taskService.getAllCategories().subscribe(res => this.dataSource.data = res);
+    this.categoryService.getAllCategories().subscribe(res => this.dataSource.data = res);
   }
   
   ngAfterViewInit() {
@@ -29,13 +29,25 @@ export class CategoriesComponent implements OnInit {
   }
 
   onEdit(element){
-    this.taskService.selectedCat = element;
+    this.categoryService.selectedCat = element;
   }
   onDelete(id: string){
-    this.taskService.deleteCategory(id);
+    this.categoryService.deleteCategory(id);
   }
 
   onSaveForm(){
-    this.taskService.editCategory(this.taskService.selectedCat);
+    if(this.categoryService.selectedCat.id == null){
+      let newCat = {
+        name: this.categoryService.selectedCat.name
+      }
+      this.categoryService.createCategory(newCat);
+    }else{
+      this.categoryService.editCategory(this.categoryService.selectedCat);
+    }
+    
+    this.categoryService.selectedCat = {
+      id: null,
+      name: '',
+    }
   }
 }

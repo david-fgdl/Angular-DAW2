@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-//import { CommonModule } from '@angular/common';
-
 /*Componentes*/
-import { ListadoComponent } from './listado/listado.component';
-import { CategoriesComponent } from './categories/categories.component';
+import { AllTasksComponent } from './all-tasks/all-tasks.component';
+/* import { CategoriesComponent } from './categories/categories.component'; */
+import { CreateTaskComponent } from './create-task/create-task.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/listado', pathMatch: 'full' },
-  { path: 'listado', component: ListadoComponent },
-  /* { path: 'createTask', component: ListadoComponent }, */
-  { path: 'categories', component: CategoriesComponent },
+  { path: 'listado', component: AllTasksComponent },
+  { path: 'createTask', component: CreateTaskComponent },
+  /* { path: 'categories', component: CategoriesComponent }, */
 ];
 
 @NgModule({
-  imports: [/*CommonModule,*/RouterModule.forRoot(routes)],
+  imports: [CommonModule,RouterModule.forRoot(routes)],
   exports: [RouterModule],
   declarations: []
 })

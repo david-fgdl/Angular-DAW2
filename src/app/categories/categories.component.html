@@ -1,9 +1,10 @@
 <div class="container">
     <mat-form-field>
-        <input matInput placeholder="Nombre de la Categoria" name="name" [(ngModel)]="this.taskService.selectedCat.name">
+        <input matInput placeholder="Nombre de la Categoria" name="name" [(ngModel)]="this.categoryService.selectedCat.name">
     </mat-form-field>
-    <button mat-flat-button color="primary" (click)="onSaveForm()">
+    <button mat-flat-button color="primary" (click)="onSaveForm()" [disabled]="!this.categoryService.selectedCat.name">
         Actualizar&nbsp;<mat-icon>update</mat-icon>
+        / Crear&nbsp;<mat-icon>save</mat-icon>
     </button>
 </div>
 
