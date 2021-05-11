@@ -14,6 +14,13 @@ export class TaskService {
 
   private taskCollection: AngularFirestoreCollection<TaskInt>;
   tasks: Observable<taskID[]>;
+  public selected = {
+    id: null,
+    task: '',
+    category: '',
+    state: '',
+    timestamp: ''
+  }
 
   constructor(private readonly afs: AngularFirestore) {
     this.taskCollection = afs.collection<TaskInt>('tasks');
@@ -28,5 +35,13 @@ export class TaskService {
 
   getAllTasks(){
     return this.tasks;
+  }
+
+  editTask(task: taskID){
+    return this.taskCollection.doc(task.id).update(task);
+  }
+
+  deleteTask(id: string){
+    return this.taskCollection.doc(id).delete();
   }
 }

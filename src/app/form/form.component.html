@@ -1,0 +1,15 @@
+<div class="container">
+    <mat-form-field>
+        <input matInput placeholder="Tarea" name="task" [(ngModel)]="this.task.selected.task">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Categoria" name="category" [(ngModel)]="this.task.selected.category">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Estado" name="state" [(ngModel)]="this.task.selected.state">
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" (click)="onSaveForm()">
+        <mat-icon>update</mat-icon>
+    </button>
+</div>

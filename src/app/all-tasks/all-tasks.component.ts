@@ -16,14 +16,20 @@ export class AllTasksComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
+  constructor(private taskService: TaskService) { }
+  
+  ngOnInit(): void {
+    this.taskService.getAllTasks().subscribe(res => this.dataSource.data = res);
+  }
+  
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
 
-  constructor(private taskService: TaskService) { }
-
-  ngOnInit(): void {
-    this.taskService.getAllTasks().subscribe(res => this.dataSource.data = res);
+  onEdit(element){
+    this.taskService.selected = element;
   }
-
+  onDelete(id: string){
+    this.taskService.deleteTask(id);
+  }
 }
