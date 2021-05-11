@@ -11,10 +11,12 @@ import { MaterialsModule } from './materials/materials.module';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+/******************/
 
 /* Components */
 import { MyNavComponent } from './my-nav/my-nav.component';
 import { ListadoComponent } from './listado/listado.component';
+import { TaskService } from './services/task.service';
 import { AllTasksComponent } from './all-tasks/all-tasks.component';
 
 @NgModule({
@@ -32,7 +34,7 @@ import { AllTasksComponent } from './all-tasks/all-tasks.component';
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.configFirebase),
   ],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
