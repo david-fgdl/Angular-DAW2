@@ -6,7 +6,7 @@ Esta aplicación consiste en una ToDo-List sencilla. Cada tarea tiene tres posib
 
 [Angular-DAW2](https://angulardawii.web.app/)
 
-# Base de datos
+  # Base de datos
 
 La aplicación utiliza Firestore como base de datos, guardando las tareas y categorías en colecciones.
 
@@ -22,12 +22,8 @@ Para visualizarlo se abre el navegador en la dirección 'http://localhost:4200/'
       `ng build`
       `firebase deploy`
       
-      
-  *La primera orden crea una versión optimizada de la aplicación.*
+  *Para la ejecución de firebase deploy es necesario tener instalado `firebase-tools`. Además, para la primera ejecución se debe iniciar sesión y ejecutar la orden `firebase init`. En el siguiente enlace: [Deploy angular firebase](https://codigofacilito.com/articulos/deploy-angular-firebase) existe una explicación más detallada sobre el hosteo de una aplicación angular en firebase por primera vez.*
   
-  
-  *Recuerda que para ejecutar firebase deploy debes tener instalado `firebase-tools`. Además, si es la primera vez que lo ejecutas antes debes iniciar sesión y ejecutar la orden `firebase init`. Siguiendo el siguiente enlace: [Deploy angular firebase](https://codigofacilito.com/articulos/deploy-angular-firebase) tienes explicado con detalle como hostear una aplicación de angular en firebase por primera vez.*
-
 # Archivos
 
 Todos los componentes creados y desarrollados en esta aplicación se encuentran dentro del directorio `src/app`, de forma específica:
