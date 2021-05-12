@@ -1,19 +1,21 @@
 <div class="container">
     <mat-form-field>
-        <input matInput placeholder="Nueva Tarea" type="text" name="task" [formControl]="taskInput" required>
-        <mat-error *ngIf="taskInput.hasError('required')">Introduzca un nombre</mat-error>
+        <input matInput placeholder="Nueva Tarea" name="task" [(ngModel)]="NewTask.task">
     </mat-form-field>
-    <div>
+    <div id="catSeleccion">
         <span>Categoria: &nbsp;</span>
-        <mat-select [formControl]="selectCat" required>
-            <mat-option>--</mat-option>
-            <mat-option *ngFor="let category of categories" [value]="category">
+
+        <mat-selection-list #categorias [multiple]="false">
+            <mat-list-option *ngFor="let category of categories" [value]="category" (click)="onSelect(category)">
                 {{category.name}}
-            </mat-option>
-        </mat-select>
-        <mat-error *ngIf="selectCat.hasError('required')">Escoge una tarea por favor</mat-error>
+            </mat-list-option>
+        </mat-selection-list>
+
     </div>
-    <button mat-flat-button color="primary" (click)="onSave()" [disabled]="selectCat.hasError('required') || taskInput.hasError('required')">
+    <p>
+        Categoria escogida: {{categorias.name}}
+    </p>
+    <button mat-flat-button color="primary" (click)="onSave()" [disabled]="!NewTask.task">
             Crear&nbsp;<mat-icon>save</mat-icon>
         </button>
 </div>

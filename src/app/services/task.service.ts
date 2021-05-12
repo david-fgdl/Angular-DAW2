@@ -32,19 +32,13 @@ export class TaskService {
     id: null,
     name: '',
   }
-
+  
   constructor(private readonly afs: AngularFirestore) {
     this.taskCollection = afs.collection<TaskInt>('tasks');
     this.tasks = this.getData();
 
-    this.categoryCollection = afs.collection<categoryID>('categories');
-    this.categories = this.categoryCollection.snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as categoryID;
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      }))
-    );
+    this.categoryCollection = afs.collection<CategoryInt>('categories');
+    this.categories = this.getAllCategories();
   }
 
   getData() {
@@ -104,7 +98,13 @@ export class TaskService {
 
   /* Categorias */
   getAllCategories() {
-    return this.categories;
+    return this.categoryCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as CategoryInt;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
   }
 
   editCategory(category: categoryID) {

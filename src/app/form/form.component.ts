@@ -8,9 +8,12 @@ import { TaskService } from '../services/task.service';
 })
 export class FormComponent implements OnInit {
 
+  public categories: any[];
+  
   constructor(public task: TaskService) { }
 
   ngOnInit(): void {
+    this.task.getAllCategories().subscribe(res => this.categories = res);
   }
 
   onSaveForm(){
@@ -24,5 +27,13 @@ export class FormComponent implements OnInit {
         timestamp: ''
     }
   }
-
+  deselect(){
+    this.task.selected = {
+        id: null,
+        task: '',
+        category: '',
+        state: '',
+        timestamp: ''
+    }
+  }
 }

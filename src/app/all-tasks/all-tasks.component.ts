@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
-
-import{TaskInt} from '../models/task.interface';
 import { TaskService } from '../services/task.service';
 
 @Component({
@@ -16,6 +14,7 @@ export class AllTasksComponent implements OnInit {
   displayedColumns: string[] = ['task', 'category', 'state', 'timestamp', 'actions'];
   dataSource = new MatTableDataSource();
   public historical=false;
+  seleccion: string;
 
    @ViewChild(MatSort) sort: MatSort;
 
@@ -37,17 +36,17 @@ export class AllTasksComponent implements OnInit {
   }
 
   StateSelector(object: string){
+    if(object == "all"){
+      this.historical = false;
+      this.taskService.getTasksNoTerminadas().subscribe(res => this.dataSource.data = res); 
+    }
     if(object == "pending"){
       this.historical = false;
       this.taskService.getTasksPendientes().subscribe(res => this.dataSource.data = res); 
     }
     if(object == "process"){
       this.historical = false;
-      this.taskService.getTasksTerminadas().subscribe(res => this.dataSource.data = res); 
-    }
-    if(object == "all"){
-      this.historical = false;
-      this.taskService.getTasksNoTerminadas().subscribe(res => this.dataSource.data = res); 
+      this.taskService.getTasksProceso().subscribe(res => this.dataSource.data = res); 
     }
     if(object == "historical"){
       this.historical = true;
