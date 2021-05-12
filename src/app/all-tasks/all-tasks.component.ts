@@ -15,13 +15,14 @@ export class AllTasksComponent implements OnInit {
 
   displayedColumns: string[] = ['task', 'category', 'state', 'timestamp', 'actions'];
   dataSource = new MatTableDataSource();
+  public historical=false;
 
    @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private taskService: TaskService) { }
+  constructor(public taskService: TaskService) { }
   
   ngOnInit(): void {
-      this.taskService.getAllTasks().subscribe(res => this.dataSource.data = res);  
+      this.taskService.getTasksNoTerminadas().subscribe(res => this.dataSource.data = res);  
   }
   
   ngAfterViewInit() {
@@ -37,13 +38,20 @@ export class AllTasksComponent implements OnInit {
 
   StateSelector(object: string){
     if(object == "pending"){
+      this.historical = false;
       this.taskService.getTasksPendientes().subscribe(res => this.dataSource.data = res); 
     }
     if(object == "process"){
-      this.taskService.getTasksPendientes().subscribe(res => this.dataSource.data = res); 
+      this.historical = false;
+      this.taskService.getTasksTerminadas().subscribe(res => this.dataSource.data = res); 
     }
     if(object == "all"){
-      this.taskService.getAllTasks().subscribe(res => this.dataSource.data = res); 
+      this.historical = false;
+      this.taskService.getTasksNoTerminadas().subscribe(res => this.dataSource.data = res); 
+    }
+    if(object == "historical"){
+      this.historical = true;
+      this.taskService.getTasksTerminadas().subscribe(res => this.dataSource.data = res); 
     }
   } 
 }

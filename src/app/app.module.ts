@@ -19,7 +19,7 @@ import { MyNavComponent } from './my-nav/my-nav.component';
 import { TaskService } from './services/task.service';
 import { AllTasksComponent } from './all-tasks/all-tasks.component';
 import { FormComponent } from './form/form.component';
-/* import { CategoriesComponent } from './categories/categories.component'; */
+import { CategoriesComponent } from './categories/categories.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { CreateTaskComponent } from './create-task/create-task.component';
     MyNavComponent,
     AllTasksComponent,
     FormComponent,
-    /* CategoriesComponent, */
+    CategoriesComponent,
     CreateTaskComponent,
   ],
   imports: [

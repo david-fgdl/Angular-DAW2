@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-/* import{ CategoryInt } from '../models/category.interface'; */
+/*  import{ CategoryInt } from '../models/category.interface';  */
 import { TaskService } from '../services/task.service';
 
 @Component({

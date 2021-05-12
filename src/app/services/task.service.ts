@@ -57,14 +57,35 @@ export class TaskService {
     );
   }
 
-  /* Tarea */
+  /* Tareas */
   getAllTasks() {
     return this.tasks;
   }
 
   getTasksPendientes() {
     this.taskCollection = this.afs.collection<taskID>('tasks', ref => {
-      return ref.where('state', '==', 'pendiente');
+      return ref.where('state', '==', 'Pendiente');
+    });
+    return this.getData();
+  }
+
+  getTasksProceso() {
+    this.taskCollection = this.afs.collection<taskID>('tasks', ref => {
+      return ref.where('state', '==', 'Proceso');
+    });
+    return this.getData();
+  }
+
+  getTasksTerminadas() {
+    this.taskCollection = this.afs.collection<taskID>('tasks', ref => {
+      return ref.where('state', '==', 'Terminado');
+    });
+    return this.getData();
+  }
+
+  getTasksNoTerminadas() {
+    this.taskCollection = this.afs.collection<taskID>('tasks', ref => {
+      return ref.where('state', '!=', 'Terminado');
     });
     return this.getData();
   }

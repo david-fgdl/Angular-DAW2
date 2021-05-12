@@ -15,6 +15,14 @@ export class FormComponent implements OnInit {
 
   onSaveForm(){
     this.task.editTask(this.task.selected);
+
+    this.task.selected = {
+        id: null,
+        task: '',
+        category: '',
+        state: '',
+        timestamp: ''
+    }
   }
 
 }
