@@ -1,5 +1,10 @@
 table {
-    width: 100%;
+    width: 96%;
+    margin: auto;
+}
+
+mat-radio-group {
+    margin-left: 16px;
 }
 
 th.mat-sort-header-sorted {

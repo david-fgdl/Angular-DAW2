@@ -1,4 +1,14 @@
 .container {
     display: flex;
     flex-direction: column;
+    margin-top: 5%;
+    border: 1px solid black;
+}
+
+#bot1 {
+    width: 50%;
+}
+
+#bot2 {
+    width: 50%;
 }

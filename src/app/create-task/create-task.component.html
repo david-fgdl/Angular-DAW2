@@ -4,16 +4,17 @@
     </mat-form-field>
     <div id="catSeleccion">
         <span>Categoria: &nbsp;</span>
-
+        <hr>
         <mat-selection-list #categorias [multiple]="false">
             <mat-list-option *ngFor="let category of categories" [value]="category" (click)="onSelect(category)">
                 {{category.name}}
+                <hr>
             </mat-list-option>
         </mat-selection-list>
 
     </div>
     <p>
-        Categoria escogida: {{categorias.name}}
+        Categoria escogida: <i>{{NewTask.category}}</i>
     </p>
     <button mat-flat-button color="primary" (click)="onSave()" [disabled]="!NewTask.task">
             Crear&nbsp;<mat-icon>save</mat-icon>

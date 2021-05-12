@@ -3,8 +3,8 @@
         <input matInput placeholder="Tarea" name="task" [(ngModel)]="this.task.selected.task">
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Categoria</mat-label>
-        <mat-select name="name" [(ngModel)]="this.task.selected.category">
+        <mat-label>{{this.task.selected.category}}</mat-label>
+        <mat-select name="name" [(ngModel)]="this.task.selected.category" placeholder="category.name">
             <mat-option *ngFor="let category of categories" [value]="category.name">
                 {{category.name}}
             </mat-option>
@@ -19,12 +19,13 @@
                 <mat-radio-button value="Terminado">Terminado</mat-radio-button>
             </mat-radio-group>
         </p>
-        <p>Estado actual: {{ this.task.selected.state }}</p>
     </div>
-    <button mat-flat-button color="primary" (click)="onSaveForm()">
-        Actualizar&nbsp;<mat-icon>update</mat-icon>
-    </button>
-    <button mat-stroke-button color="basic" (click)="deselect()">
-        &nbsp;Borrar seleccion&nbsp;<mat-icon>update</mat-icon>
-    </button>
+    <div class="row" #buttons>
+        <button id="bot1" mat-flat-button color="primary" (click)="onSaveForm()">
+            Actualizar&nbsp;<mat-icon>update</mat-icon>
+        </button>
+        <button id="bot2" mat-stroke-button color="basic" (click)="deselect()">
+            &nbsp;Borrar seleccion&nbsp;<mat-icon>update</mat-icon>
+        </button>
+    </div>
 </div>

@@ -17,7 +17,7 @@ export class AllTasksComponent implements OnInit {
   seleccion: string;
 
    @ViewChild(MatSort) sort: MatSort;
-
+  
   constructor(public taskService: TaskService) { }
   
   ngOnInit(): void {

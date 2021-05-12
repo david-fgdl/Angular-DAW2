@@ -17,7 +17,7 @@ export class CreateTaskComponent implements OnInit {
     state: 'Pendiente',
     timestamp: new Date().toDateString()+ ", " + new Date().toLocaleTimeString(),
   }
-  
+
   constructor(public task: TaskService, private router: Router) { }
 
   ngOnInit(): void {
