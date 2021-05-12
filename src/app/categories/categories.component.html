@@ -1,21 +1,31 @@
+<div class="container">
+    <mat-form-field>
+        <input matInput placeholder="Nombre de la Categoria" name="name" [(ngModel)]="this.categoryService.selectedCat.name">
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="onSaveForm()" [disabled]="!this.categoryService.selectedCat.name">
+        Actualizar&nbsp;<mat-icon>update</mat-icon>
+        / Crear&nbsp;<mat-icon>save</mat-icon>
+    </button>
+</div>
+
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="Nombre">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre de la Categoria </th>
-        <td mat-cell *matCellDef="let element"> <i>{{element.name}}</i> </td>
+    <!-- task Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="Acciones">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Accion </th>
+    <!-- action Column -->
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let element">
-            <button mat-flat-button color="accent" (click)="onEdit(element)">
-                <mat-icon aria-hidden="false" aria-label="edit icon">edit</mat-icon>
-              </button>&nbsp;
-            <button mat-flat-button color="warn" (click)="onDelete(element.id)">
-                <mat-icon aria-hidden="false" aria-label="delete icon">delete</mat-icon>
-              </button>
+            <button mat-raised-button color="primary" (click)="onEdit(element)">
+                Editar &nbsp;<mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+            </button>
+            <button mat-stroked-button color="warn" (click)="onDelete(element.id)">
+                &nbsp;Borrar&nbsp;<mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+            </button>
         </td>
     </ng-container>
 

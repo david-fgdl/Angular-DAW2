@@ -1,1 +1,19 @@
-<p>create-task works!</p>
+<div class="container">
+    <mat-form-field>
+        <input matInput placeholder="Nueva Tarea" type="text" name="task" [formControl]="taskInput" required>
+        <mat-error *ngIf="taskInput.hasError('required')">Introduzca un nombre</mat-error>
+    </mat-form-field>
+    <div>
+        <span>Categoria: &nbsp;</span>
+        <mat-select [formControl]="selectCat" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let category of categories" [value]="category">
+                {{category.name}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="selectCat.hasError('required')">Escoge una tarea por favor</mat-error>
+    </div>
+    <button mat-flat-button color="primary" (click)="onSave()" [disabled]="selectCat.hasError('required') || taskInput.hasError('required')">
+            Crear&nbsp;<mat-icon>save</mat-icon>
+        </button>
+</div>
