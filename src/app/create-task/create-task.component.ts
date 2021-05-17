@@ -15,7 +15,7 @@ export class CreateTaskComponent implements OnInit {
     task: '',
     category: '',
     state: 'Pendiente',
-    timestamp: new Date().toDateString()+ ", " + new Date().toLocaleTimeString(),
+    timestamp: new Date().toLocaleString()
   }
 
   constructor(public task: TaskService, private router: Router) { }
