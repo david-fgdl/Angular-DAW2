@@ -33,8 +33,10 @@ export class CategoriesComponent implements OnInit {
     this.categoryService.selectedCat = element;
     this.oldCat = element.name;
   }
-  onDelete(id: string) {
-    this.categoryService.deleteCategory(id);
+  onDelete(element) {
+    this.categoryService.deleteCategory(element.id);
+    this.oldCat = element.name;
+    this.changeCat(true);
   }
 
   onSaveForm() {
@@ -44,21 +46,30 @@ export class CategoriesComponent implements OnInit {
       }
       this.categoryService.createCategory(newCat);
     } else {
-      this.newCat = this.categoryService.selectedCat.name;
       this.categoryService.editCategory(this.categoryService.selectedCat);
-      (this.categoryService.tasks).forEach(tasks => {
-        tasks.forEach(task => {
-          if (task.category == this.oldCat) {
-            this.categoryService.selected = task;
-            this.categoryService.selected.category = this.newCat
-            this.categoryService.editTask(this.categoryService.selected);
-          }
-        })
-      })
+      this.changeCat(false);
     }
     this.categoryService.selectedCat = {
       id: null,
       name: '',
     }
+  }
+
+  private changeCat(del: boolean){
+    if(del){
+      this.newCat = "Categoria Eliminada"
+    }else{
+      this.newCat = this.categoryService.selectedCat.name;
+    }
+    
+    (this.categoryService.tasks).forEach(tasks => {
+      tasks.forEach(task => {
+        if (task.category == this.oldCat) {
+          this.categoryService.selected = task;
+          this.categoryService.selected.category = this.newCat
+          this.categoryService.editTask(this.categoryService.selected);
+        }
+      })
+    })
   }
 }
