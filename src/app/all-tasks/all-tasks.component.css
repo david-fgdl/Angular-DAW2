@@ -3,10 +3,17 @@ table {
     margin: auto;
 }
 
-mat-radio-group {
-    margin-left: 16px;
+.selector {
+    margin: 15px 0;
 }
 
 th.mat-sort-header-sorted {
     color: black;
+}
+
+td.mat-cell {
+    font-size: 80%;
+    padding: 5px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }

@@ -1,12 +1,11 @@
-<div #selector>
-    <mat-radio-group name="fontStyle">
+<div>
+    <mat-radio-group class="selector" name="fontStyle">
         <mat-radio-button value="1" (click)="StateSelector('all')">Todas</mat-radio-button>
         <mat-radio-button value="2" (click)="StateSelector('pending')">Tareas Pendientes</mat-radio-button>
         <mat-radio-button value="3" (click)="StateSelector('process')">Tareas en Proceso</mat-radio-button>
         <mat-radio-button value="4" (click)="StateSelector('historical')">Historico</mat-radio-button>
     </mat-radio-group>
 </div>
-<div></div>
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
     <!-- task Column -->
