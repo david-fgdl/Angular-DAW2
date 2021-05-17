@@ -3,7 +3,7 @@
         <input matInput placeholder="Nueva Tarea" name="task" [(ngModel)]="NewTask.task">
     </mat-form-field>
     <div id="catSeleccion">
-        <span>Categoria: &nbsp;</span>
+        <span>Escoja una categoria: &nbsp;</span>
         <hr>
         <mat-selection-list #categorias [multiple]="false">
             <mat-list-option *ngFor="let category of categories" [value]="category" (click)="onSelect(category)">
