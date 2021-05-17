@@ -4,6 +4,7 @@
 
 .navbar-brand {
     margin-left: 20px;
+    white-space: normal;
 }
 
 h2 {
@@ -12,4 +13,5 @@ h2 {
 
 nav {
     margin-bottom: 2.5%;
+    width: 100%;
 }

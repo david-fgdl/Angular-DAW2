@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from "@angular/router";
 
 import { TaskService } from '../services/task.service';
 
@@ -19,7 +20,7 @@ export class CategoriesComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public categoryService: TaskService) { }
+  constructor(public categoryService: TaskService, private router: Router) { }
 
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe(res => this.dataSource.data = res);
@@ -39,6 +40,14 @@ export class CategoriesComponent implements OnInit {
     this.changeCat(true);
   }
 
+  deselect(){
+    this.categoryService.selectedCat = {
+      id: null,
+      name: '',
+    }
+    this.router.navigate(['/categories']);
+  }
+
   onSaveForm() {
     if (this.categoryService.selectedCat.id == null) {
       let newCat = {
@@ -53,6 +62,8 @@ export class CategoriesComponent implements OnInit {
       id: null,
       name: '',
     }
+
+    this.router.navigate(['/categories']);
   }
 
   private changeCat(del: boolean){

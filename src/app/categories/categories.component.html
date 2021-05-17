@@ -1,38 +1,42 @@
 <div class="container">
-    <mat-form-field>
-        <input matInput placeholder="Nombre de la Categoria" name="name" [(ngModel)]="this.categoryService.selectedCat.name">
-    </mat-form-field>
-    <button mat-flat-button color="primary" (click)="onSaveForm()" [disabled]="!this.categoryService.selectedCat.name">
-        Actualizar&nbsp;<mat-icon>update</mat-icon>
-        / Crear&nbsp;<mat-icon>save</mat-icon>
-    </button>
+    <div class="formulario">
+        <mat-form-field>
+            <input matInput placeholder="Nombre de la Categoria" name="name" [(ngModel)]="this.categoryService.selectedCat.name">
+        </mat-form-field>
+
+        <div class="row">
+            <button id="bot1" mat-flat-button color="primary" (click)="onSaveForm()" [disabled]="!this.categoryService.selectedCat.name">
+                Actualizar&nbsp;<mat-icon>update</mat-icon>
+                / Crear&nbsp;<mat-icon>save</mat-icon>
+            </button>
+            <button id="bot2" mat-stroke-button color="basic" (click)="deselect()">
+                &nbsp;Borrar seleccion&nbsp;<mat-icon>replay</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+        <!-- task Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- action Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button color="primary" (click)="onEdit(element)">
+                    Editar &nbsp;<mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+                </button>
+                <button mat-stroked-button color="warn" (click)="onDelete(element)">
+                    &nbsp;Borrar&nbsp;<mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 </div>
-
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-
-    <!-- task Column -->
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-
-    <!-- action Column -->
-    <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let element">
-            <button mat-raised-button color="primary" (click)="onEdit(element)">
-                Editar &nbsp;<mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
-            </button>
-            <button mat-stroked-button color="warn" (click)="onDelete(element)">
-                &nbsp;Borrar&nbsp;<mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
-            </button>
-        </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-<!-- <div>
-    cat selected<span>{{ this.categoryService.selected}}</span>
-</div> -->

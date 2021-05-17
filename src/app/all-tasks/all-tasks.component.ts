@@ -14,6 +14,7 @@ export class AllTasksComponent implements OnInit {
   displayedColumns: string[] = ['task', 'category', 'state', 'timestamp', 'actions'];
   dataSource = new MatTableDataSource();
   public historical=false;
+  public all=true;
   seleccion: string;
 
    @ViewChild(MatSort) sort: MatSort;
@@ -38,18 +39,22 @@ export class AllTasksComponent implements OnInit {
   StateSelector(object: string){
     if(object == "all"){
       this.historical = false;
+      this.all = true;
       this.taskService.getTasksNoTerminadas().subscribe(res => this.dataSource.data = res); 
     }
     if(object == "pending"){
       this.historical = false;
+      this.all = false;
       this.taskService.getTasksPendientes().subscribe(res => this.dataSource.data = res); 
     }
     if(object == "process"){
       this.historical = false;
+      this.all = false;
       this.taskService.getTasksProceso().subscribe(res => this.dataSource.data = res); 
     }
     if(object == "historical"){
       this.historical = true;
+      this.all = false;
       this.taskService.getTasksTerminadas().subscribe(res => this.dataSource.data = res); 
     }
   } 

@@ -38,5 +38,6 @@ export class FormComponent implements OnInit {
         state: '',
         timestamp: ''
     }
+    this.router.navigate(['/listado']);
   }
 }

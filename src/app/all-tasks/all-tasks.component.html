@@ -1,54 +1,59 @@
-<div>
-    <mat-radio-group class="selector" name="fontStyle">
-        <mat-radio-button value="1" (click)="StateSelector('all')">Todas</mat-radio-button>
-        <mat-radio-button value="2" (click)="StateSelector('pending')">Tareas Pendientes</mat-radio-button>
-        <mat-radio-button value="3" (click)="StateSelector('process')">Tareas en Proceso</mat-radio-button>
-        <mat-radio-button value="4" (click)="StateSelector('historical')">Historico</mat-radio-button>
-    </mat-radio-group>
+<div class="container">
+    <div class="row">
+        <mat-radio-group class="selector" name="fontStyle">
+            <mat-radio-button value="1" (click)="StateSelector('all')">Todas</mat-radio-button>
+            <mat-radio-button value="2" (click)="StateSelector('pending')">Tareas Pendientes</mat-radio-button>
+            <mat-radio-button value="3" (click)="StateSelector('process')">Tareas en Proceso</mat-radio-button>
+            <mat-radio-button value="4" (click)="StateSelector('historical')">Historico</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="row">
+
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+            <!-- task Column -->
+            <ng-container matColumnDef="task">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tarea </th>
+                <td mat-cell *matCellDef="let element"> <b>{{element.task}}</b> </td>
+            </ng-container>
+
+            <!-- category Column -->
+            <ng-container matColumnDef="category">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
+                <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+            </ng-container>
+
+            <!-- state Column -->
+            <ng-container matColumnDef="state">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header [hidden]="!all"> Estado </th>
+                <td mat-cell *matCellDef="let element" [hidden]="!all"> {{element.state}} </td>
+            </ng-container>
+
+            <!-- timestamp Column -->
+            <ng-container matColumnDef="timestamp">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Creación </th>
+                <td mat-cell *matCellDef="let element"> <i>{{element.timestamp}}</i> </td>
+            </ng-container>
+
+            <!-- action Column -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element">
+                    <button *ngIf="!historical" mat-raised-button color="primary" (click)="onEdit(element)">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+            </button>&nbsp;
+                    <button mat-stroked-button color="warn" (click)="onDelete(element.id)">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+            </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <ng-container *ngIf="this.taskService.selected.id">
+            <app-form></app-form>
+        </ng-container>
+    </div>
 </div>
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-
-    <!-- task Column -->
-    <ng-container matColumnDef="task">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tarea </th>
-        <td mat-cell *matCellDef="let element"> <b>{{element.task}}</b> </td>
-    </ng-container>
-
-    <!-- category Column -->
-    <ng-container matColumnDef="category">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
-        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
-    </ng-container>
-
-    <!-- state Column -->
-    <ng-container matColumnDef="state">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
-    </ng-container>
-
-    <!-- timestamp Column -->
-    <ng-container matColumnDef="timestamp">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Creación </th>
-        <td mat-cell *matCellDef="let element"> <i>{{element.timestamp}}</i> </td>
-    </ng-container>
-
-    <!-- action Column -->
-    <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let element">
-            <button *ngIf="!historical" mat-raised-button color="primary" (click)="onEdit(element)">
-                Editar &nbsp;<mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
-            </button>
-            <button mat-stroked-button color="warn" (click)="onDelete(element.id)">
-                &nbsp;Borrar&nbsp;<mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
-            </button>
-        </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-<ng-container *ngIf="this.taskService.selected.id">
-    <app-form></app-form>
-</ng-container>

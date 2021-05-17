@@ -13,7 +13,7 @@ export class CreateTaskComponent implements OnInit {
 
   NewTask = {
     task: '',
-    category: '',
+    category: 'Categoría no Seleccionada',
     state: 'Pendiente',
     timestamp: new Date().toLocaleString()
   }

@@ -7,8 +7,22 @@ th.mat-sort-header-sorted {
     color: black;
 }
 
+mat-form-field {
+    width: 100%;
+    text-align: center;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     margin-bottom: 1%;
+}
+
+.formulario {
+    margin-bottom: 15px;
+}
+
+#bot1,
+#bot2 {
+    width: 50%;
 }
